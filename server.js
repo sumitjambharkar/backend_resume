@@ -12,7 +12,7 @@ const app = express();
 const port = 3009 || process.env.PORT;
 
 const corsOptions = {
-    origin: ['http://localhost:5173'],
+    origin: ['http://localhost:5173','https://resumeone.vercel.app'],
     methods:"POST,GET",
     Credential:true
 };
