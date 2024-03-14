@@ -5,6 +5,8 @@ const Database = require("./Database");
 const Resume = require("./model/Resume");
 const puppeteer = require('puppeteer');
 const session = require('express-session');
+const htmlPdf = require('html-pdf');
+const pdfLib = require('pdf-lib');
 const dotenv = require('dotenv');
 dotenv.config()
 require("./passport")
@@ -92,7 +94,8 @@ app.get('/auth/google/callback',
 
 app.post('/convertToPdf', async (req, res) => {
 
-    const browser = await puppeteer.launch();
+    const browser = await puppeteer.launch({ headless: true });
+
     const page = await browser.newPage();
 
     await page.setViewport({
@@ -113,6 +116,9 @@ app.post('/convertToPdf', async (req, res) => {
     res.setHeader('Content-Type', 'application/pdf');
     res.send(pdfBuffer);
 });
+
+
+
 
 app.listen(port, () => {
     console.log(`Server is running on http://localhost:${port}`);
