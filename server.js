@@ -4,7 +4,7 @@ const passport = require('passport');
 const Database = require("./Database");
 const Resume = require("./model/Resume");
 const puppeteer = require('puppeteer');
-
+const session = require('express-session');
 const htmlPdf = require('html-pdf');
 const pdfLib = require('pdf-lib');
 const dotenv = require('dotenv');
@@ -19,6 +19,11 @@ const corsOptions = {
     Credential:true
 };
 
+app.use(session({
+    secret: 'your_secret_key',
+    resave: false,
+    saveUninitialized: true
+}));
 app.use(express.json())
 app.use(cors(corsOptions))
 
