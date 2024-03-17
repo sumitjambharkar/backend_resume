@@ -52,12 +52,13 @@ app.post('/create-resume', async (req, res) => {
 
 app.get('/show-resume', async (req, res) => {
     try {
-        const data = await Resume.find()
-        res.json(data)
+        const data = await Resume.find({},"_id name image");
+        res.json(data);
     } catch (error) {
-        res.json({ message: "error" })
+        res.json({ message: "error" });
     }
 });
+
 
 app.get('/single-resume/:id', async (req, res) => {
     try {
