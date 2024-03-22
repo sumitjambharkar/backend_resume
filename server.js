@@ -14,7 +14,7 @@ const app = express();
 const port = 3009 || process.env.PORT;
 
 const corsOptions = {
-    origin: ['http://localhost:5173','https://resumeone.vercel.app'],
+    origin: ['http://localhost:5173','https://freeresume.uk.to'],
     methods:"POST,GET",
     Credential:true
 };
